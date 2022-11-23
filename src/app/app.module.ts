@@ -6,15 +6,18 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { routes } from './routes';
 
+import { LobbyListComponent } from './views/lobby/lobby-list/lobby-list.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LobbyListComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    FormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
