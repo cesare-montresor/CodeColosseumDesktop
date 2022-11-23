@@ -7,17 +7,17 @@ import { WebSocketSubject } from 'rxjs/webSocket';
 
 export class ApiService {
   public url = 'ws://localhost:8088';
-
   
   public gameList( result:(gameList:String[])=>void ){
     let cmdGameList = new Commands.GameList(this.url);
     cmdGameList.resultGameList = (message)=>{
       if(result){result(message.games)}
-      alert(message.games);
+      //alert(message.games);
     }
     cmdGameList.run();
     return cmdGameList;
   }
+  
 }
 
 export class CoCoSocket{
@@ -189,7 +189,7 @@ export namespace Packets{
   }
 
   export class GameParams {
-    public players:number=0;
+    public players: number=0;
     public bots: number=0;
     public timeout: number=30.0;
   }
@@ -253,6 +253,7 @@ export namespace Packets{
   export namespace Reply{
     export class Message extends Packets.Message {}
     export class Handshake extends Message {
+      public version = 0;
       public magic: string = "";
     }
     export class GameList extends Message { 
