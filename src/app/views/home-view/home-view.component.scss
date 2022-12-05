@@ -1,0 +1,24 @@
+
+.cc-gamelist-header {
+    justify-content: space-between;
+    > * {
+        margin: 10px;
+    }
+    button {
+        margin:0 10px 0 0;
+    }
+}
+
+
+.cc-home-container {
+    margin: 0% 10% 0% 10%;
+    
+    p-scrollPanel{
+        margin:40px 0 0 40px;
+    }
+}
+
+p-selectbutton {
+    display:flex;
+    align-self:center;
+}

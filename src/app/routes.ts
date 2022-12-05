@@ -7,7 +7,7 @@ import { HomeViewComponent } from './views/home-view/home-view.component';
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: '/home',
+        redirectTo: '/connect',
         pathMatch: 'full'
     },
     {

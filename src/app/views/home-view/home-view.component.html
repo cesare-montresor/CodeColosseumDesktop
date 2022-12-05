@@ -7,6 +7,118 @@
     <button (click)="actionCompile()">Compile</button>
 </div>
 
+
+
+<div class="cc-home-container">
+
+    <h1>Join game</h1>
+
+    <div class="cc-gamelist-header" style="display:flex;"> 
+        <p-selectButton [style]="{'align-items': 'center',display:'inline-block','box-shadow': 'none'}"  [options]="stateOptions" [(ngModel)]="view_mode">
+            <ng-template let-item>
+                <i [class]="item.icon"></i>
+            </ng-template>
+        </p-selectButton> 
+
+        <div>
+            <button pButton type="button" class="p-button-rounded p-button-outlined" icon="pi pi-refresh"></button>
+            <button pButton class="p-button-raised" label="Create new game" icon="pi pi-plus" routerLink="newgame"></button>
+        </div>
+</div>
+    
+
+    <p-scrollPanel *ngIf="view_mode === 'card'" [style]="{width:'100%',height:'600px'}">
+        <div class="surface-ground">
+            <div class="grid">
+                    <ng-template ngFor let-game [ngForOf]="gamelist">
+                        
+                        <div class="col-12 md:col-6 xl:col-3 p-3">
+                            <div class="surface-card shadow-2 border-rounded p-3" style="border-radius: 6px">
+                                <div class="flex justify-content-between align-items-start">
+                                    <div>
+                                        <div class="text-xl font-medium text-900 mb-2">{{game.game}}  <i class="pi pi-check" *ngIf="game.verified" pTooltip="Verified!" tooltipPosition="top"></i></div>
+                                        <p class="mt-0 mb-3 text-600">{{game.id}} <p-tag value="{{game.current ? 'Current':'Ended'}}" [severity]="game.current ? 'primary' : 'warning'"></p-tag></p>
+                                    </div>
+                                    <button pButton pRipple icon="pi pi-play" class="p-button-round" routerLink="/game"></button>
+                                </div>
+                                <ul class="list-none m-0 p-0">
+                                    <li class="px-0 py-2 flex justify-content-between align-items-center border-bottom-1 surface-border">
+                                        
+                                        <span class="text-600 font-medium text-sm"><i class="pi pi-user"></i>  Players</span>
+                                        <span class="text-900 font-medium text-sm">{{game.players}}/{{game.maxplayers}}</span>
+                                    </li>
+                                    <li class="px-0 py-2 flex justify-content-between align-items-center">
+                                        <span class="text-600 font-medium text-sm"><i class="pi pi-eye"></i>  Spectators</span>
+                                        <span class="text-900 font-medium text-sm">{{game.spectators}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </ng-template>
+            </div>
+        </div>
+    </p-scrollPanel>
+
+
+    <p-scrollPanel *ngIf="view_mode === 'table'" [style]="{width:'100%',height:'600px'}" >
+        <div class="cc-gamelist">
+            <p-table [value]="gamelist" [loading]="loading" responsiveLayout="scroll" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th [pSortableColumn]="'verified'">
+                            Verified
+                            <p-sortIcon [field]="'verified'"></p-sortIcon>
+                        </th>
+
+                        <th [pSortableColumn]="'id'">
+                            ID
+                            <p-sortIcon [field]="'id'"></p-sortIcon>
+                        </th>
+                        
+                        <th [pSortableColumn]="'game'">
+                            Game
+                            <p-sortIcon [field]="'game'"></p-sortIcon>
+                        </th>
+                        
+                        <th>Players</th>
+                        <th>Spectators</th>
+                        <th>Timeout</th>
+                        <th>Password</th>
+
+                        <th [pSortableColumn]="'current'">
+                            Time
+                            <p-sortIcon [field]="'current'"></p-sortIcon>
+                        </th>
+                        
+                        <th> </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-game>
+                    <tr>
+                        <td>
+                            <i class="pi pi-check" *ngIf="game.verified"></i>
+                        </td>
+                        <td>{{game.id}}</td>
+                        <td>{{game.game}}</td>
+                        <td>{{game.players}} / {{game.maxplayers}}</td>
+                        <td>{{game.spectators}}</td>
+                        <td>{{game.timeout}}</td>
+                        <td>{{game.password}}</td>
+                        <td>
+                            <p-tag value="{{game.current ? 'Current':'Ended'}}" [severity]="game.current ? 'primary' : 'warning'"></p-tag>
+                        </td>
+                        <td>
+                            <p-button label="Play" icon="pi pi-play" iconPos="left" routerLink="/game"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </p-scrollPanel>
+</div>
+
+
+
 <div>
     <button (click)="actionRock()">Rock</button>
     <button (click)="actionPaper()">Paper</button>

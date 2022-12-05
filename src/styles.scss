@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeflex/primeflex.css";
+
 $layout-padding: 2rem;
 
 * {
@@ -55,4 +57,13 @@ div.cc-center-layout {
     align-items: center;
     justify-content: center;
 }
-*/
+.p-scrollpanel:hover .p-scrollpanel-bar, .p-scrollpanel:active .p-scrollpanel-bar{
+    background-color: var(--primary-color);
+}
+
+.p-scrollpanel-wrapper{
+    border-radius: 10px;
+}
+.surface-ground{
+    border-radius: 10px;
+}

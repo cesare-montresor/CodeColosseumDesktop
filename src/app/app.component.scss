@@ -6,7 +6,11 @@ div.cc-page{
         align-items: center;
         justify-content: space-between;
         padding:1rem 2rem;
-        div.cc-topbar-logo{}
+        div.cc-topbar-logo{
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
         div.cc-topbar-info-list{
             display:flex;
