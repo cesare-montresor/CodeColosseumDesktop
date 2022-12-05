@@ -30,10 +30,7 @@ export class HomeViewComponent implements OnInit {
             this.loading = false;
         }, 1000);
   }
-
-  async ngOnInit(): Promise<void> {
-  }
-
+  
 
   async actionRock() {
     await this.child?.write("ROCK\n");
